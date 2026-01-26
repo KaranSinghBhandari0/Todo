@@ -64,6 +64,8 @@ export default function App() {
           MERN Task Master
         </h1>
 
+        <p className="mb-4">Backend URL: <span className="text-red-500">{import.meta.env.VITE_API_URL}</span></p>
+
         <form onSubmit={addTodo} className="flex gap-2 mb-6">
           <input
             className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all"
