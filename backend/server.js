@@ -22,6 +22,20 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('Todo', todoSchema);
 
+// Root Route
+app.get('/', (req, res) => {
+  res.send("Todo API is running");
+});
+
+// Show environment variables (for debugging purposes)
+app.get('/env', (req, res) => {
+  res.json({
+    PORT: process.env.PORT,
+    FRONTEND_URL: process.env.FRONTEND_URL,
+    MONGO_URL: process.env.MONGO_URL
+  });
+});
+
 // CRUD Routes
 app.get('/todos', async (req, res) => {
   const todos = await Todo.find();
