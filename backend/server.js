@@ -64,6 +64,7 @@ app.get("/health", (req, res) => {
 
 console.log("Hello from the backend!");
 console.log("My name is Karan Singh Bhandari");
+console.log("I am a software developer with a passion for building scalable applications.");
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
