@@ -1,23 +1,20 @@
-# -------- Stage 1: Build Dependencies --------
-FROM node:20-alpine AS builder
+# Use official Node.js image
+FROM node:18-alpine
 
+# Set working directory inside container
 WORKDIR /app
 
+# Copy package.json first (caching optimization)
 COPY package*.json ./
 
-RUN npm ci --omit=dev
+# Install dependencies
+RUN npm install
 
+# Copy the rest of the code
 COPY . .
 
-# -------- Stage 2: Production Image --------
-FROM node:20-alpine
-
-WORKDIR /app
-
-ENV NODE_ENV=production
-
-COPY --from=builder /app /app
-
+# Expose the port defined in your .env
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+# Start the server
+CMD ["npm", "start"]

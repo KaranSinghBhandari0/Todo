@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  backend:
+    image: karan1903/todo-backend:v1
+    container_name: todo-backend
+    ports:
+      - "8000:3000" # set the host port same as frontend's expected backend port (in Jenkins too)
+    environment:
+      MONGO_URL: mongodb+srv://karanbhandari037_db_user:y8PQhf5KOB0FmZYa@karan-database.tmodkpz.mongodb.net/TestDB
+      PORT: 3000
+      FRONTEND_URL: http://localhost:5173
+
+  frontend:
+    image: karan1903/todo-frontend:v2
+    container_name: todo-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend # means frontend will start after backend is started
