@@ -63,6 +63,7 @@ app.get("/health", (req, res) => {
 });
 
 console.log("Hello from the backend!");
+console.log("My name is Karan Singh Bhandari");
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
