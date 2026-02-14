@@ -62,5 +62,8 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK" });
 });
 
+// Testing AWS Cleanup - Version 2
+console.log("I am a new image!");
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
