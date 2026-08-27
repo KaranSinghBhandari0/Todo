@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  backend:
+    image: harshdaksh49/ticket-backend
+    container_name: ticket-backend
+    ports:
+      - "8000:3000" # set the host port same as frontend's expected backend port (in Jenkins too)
+    environment:
+      MONGO_URL: 
+      PORT: 3000
+      FRONTEND_URL: http://localhost:5173
+
+  frontend:
+    image: harshdaksh49/ticket-frontend
+    container_name: ticket-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend # means frontend will start after backend is started
